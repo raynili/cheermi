@@ -1,0 +1,10 @@
+.share {
+    background-color: rgb(204, 204, 204);
+    flex: 3;
+}
+
+.share-holder {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+}

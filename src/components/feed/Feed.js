@@ -1,14 +1,13 @@
-import "./Feed.css"
-import TaskPost from "../posts/TaskPost"
-import Share from "../share/Share"
+import "./Feed.css";
+import Post from '../posts/Post';
 
 export default function Feed() {
     return (
         <div className="feed">
             <div className="feedWrapper">
                 feed
-                <TaskPost />
-                <Share />
+                {/* feed selector here */}
+                <Post />           
             </div>
         </div>
     )
