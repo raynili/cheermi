@@ -6,7 +6,8 @@
     align-items: flex-start;
 
     border: 1px gray;
-    border-style: solid none;
+    border-style: solid;
+    /* border-style: solid none; */
 }
 
 .poster-info {
