@@ -1,10 +1,52 @@
 .share {
-    background-color: rgb(204, 204, 204);
+    background-color: white;
     flex: 3;
+}
+
+.poster-info {
+    padding: 10px 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-self: left;
+}
+
+.poster-pic {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
+
+.poster-name {
+    padding-left: 10px;
 }
 
 .share-holder {
     background-color: rgb(255, 255, 255);
-    padding: 20px;
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+	margin-top: 0.5em;
+}
+
+label {
+	display: block;
+	margin: 0.40em 0;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #ffb414;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }

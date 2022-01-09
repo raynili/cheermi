@@ -1,4 +1,18 @@
 .feed {
-    background-color: #ffb414;
+    background-color: white;
     flex: 4;
+}
+
+.feedSelector {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+}
+
+input#search {
+    background-image:url(../posts/pfp.png);
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
 }
