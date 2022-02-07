@@ -5,9 +5,9 @@
     flex-direction: column;
     align-items: flex-start;
 
-    border: 1px gray;
-    border-style: solid;
-    /* border-style: solid none; */
+    border-width: 1px 0 1px 0;
+    border-style: solid none solid none;
+    border-color: gray;
 }
 
 .poster-info {
@@ -22,7 +22,7 @@
     width: 50px;
 }
 
-.poster-name {
+.poster-name-time {
     padding-left: 10px;
 }
 
@@ -56,4 +56,5 @@ button {
     margin: 0 5px 5px;
     padding: 10px;
     font-size: 15px;
+    border-radius: 3px;
   }

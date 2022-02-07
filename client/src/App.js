@@ -2,17 +2,26 @@ import './App.css';
 import Share from "./components/share/Share";
 import Feed from './components/feed/Feed';
 import RightSidebar from './components/sidebar/RightSidebar';
+//import './custom.scss';
+import Button from 'react-bootstrap/Button';
+
+import { GlobalProvider } from './context/GlobalState';
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-header">cheermi</div>
-      <div className="homeContainer">
-        <Share />
-        <Feed />
-        <RightSidebar />
+    <GlobalProvider>
+      <div className="App">
+        <div className="App-header">
+          <div className="title">cheermi</div>
+          <Button className="log-in-button">Log In</Button>{' '}
+        </div>
+        <div className="homeContainer">
+          <Share />
+          <Feed />
+          <RightSidebar />
+        </div>
       </div>
-    </div>
+    </GlobalProvider>
   );
 }
 

@@ -1,3 +1,6 @@
 .rightsidebar {
     flex: 3;
+    border-width: 0 0 0 1px;
+    border-style: none none none solid;
+    border-color: gray;
 }

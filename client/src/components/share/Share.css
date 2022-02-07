@@ -1,6 +1,10 @@
 .share {
     background-color: white;
     flex: 3;
+
+    border-width: 0 1px 0 0;
+    border-style: none solid none none;
+    border-color: gray;
 }
 
 .poster-info {
@@ -33,6 +37,7 @@ textarea {
 	font: inherit;
 	margin: 0;
 	margin-top: 0.5em;
+    resize: none;
 }
 
 label {

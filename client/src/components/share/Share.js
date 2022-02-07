@@ -2,12 +2,15 @@ import "./Share.css";
 import pfp from '../posts/pfp.png';
 
 export default function Share() {
+
+    const profile = 'Rayni Li'
+
     return (
         <div className='share'>
             <div className="poster-info">
                 <img className="poster-pic" src={pfp} alt="pfp"/>
                 <p className = "poster-name">
-                    Rayni Li
+                    { profile }
                 </p>
             </div>
 
