@@ -3,7 +3,7 @@ const express = require('express');
 const { route } = require('express/lib/router');
 const router = express.Router();
 
-const { getPosts, addPost, deletePost } = require('../controller/posts');
+const { getPosts, addPost, deletePost, likePost } = require('../controller/posts');
 
 //router.get('/', (req, res) => res.send('Hello'));
 
@@ -14,7 +14,8 @@ router
 
 router 
     .route('/:id')
-    .delete(deletePost);
+    .delete(deletePost)
+    .patch(likePost);
 
 module.exports = router;
 

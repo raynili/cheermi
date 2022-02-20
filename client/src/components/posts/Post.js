@@ -1,7 +1,11 @@
 import './Post.css';
 import pfp from './pfp.png';
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalState';
 
 export default function Post({ post }) {
+    const { deletePost, likePost } = useContext(GlobalContext);
+
     return (
         <div className="post">
             <div className="poster-info">
@@ -13,8 +17,8 @@ export default function Post({ post }) {
                 { post.text }
             </div>
             <div className="buttons">
-                <button>Manifest x { post.prayers }</button>
-                <button>Achieved</button>
+                <button className={`${ post.liked_by.includes(post.user) ? "button-white" : "button-orange"}`} onClick={() => likePost(post._id, post.user, post.prayers, post.liked_by)}>Manifest x { post.prayers }</button>
+                <button className="button-orange" onClick={() => deletePost(post._id)}>Achieved</button>
             </div>
 
         </div>

@@ -30,7 +30,8 @@
   top: 6px;
   background-color: white;
   color: #ffb414;
-  border-radius: 3px;
+  border-color: white;
+  border-radius: 0px;
 }
 
 .homeContainer {

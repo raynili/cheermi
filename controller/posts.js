@@ -27,9 +27,9 @@ exports.getPosts = async (req, res, next) => {
 // @access    Public
 exports.addPost = async (req, res, next) => {
     try {
-        const { user, post_time, text, prayers } = req.body;
+        const { user, post_time, text, prayers, liked_by } = req.body;
 
-        const post = await Post.create({user, post_time, text, prayers});
+        const post = await Post.create({user, post_time, text, prayers, liked_by});
 
         return res.status(201).json({
             success: true,
@@ -73,6 +73,44 @@ exports.deletePost = async (req, res, next) => {
         return res.status(200).json({
             success: true,
             data: {}
+        });
+
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(val => val.message);
+
+            return res.status(400).json({ // 400 due to client error
+                success: false,
+                error: messages
+            });
+        } else {
+            return res.status(500).json({
+                success: false,
+                error: 'Server Error'
+            });
+        }
+    }
+}
+
+// @desc      Like post
+// @route     PATCH /api/v1/posts/:id
+// @access    Public
+exports.likePost = async (req, res, next) => {
+    try {
+        const { user } = req.body;
+
+        const post = await Post.findOneAndUpdate({_id: req.params.id}, {$inc: {'prayers': 1}, $addToSet: {liked_by: user}});
+ 
+        if (!post) {
+            return res.status(400).json({
+                success: false,
+                error: 'Post not found'
+            });
+        }
+
+        return res.status(201).json({
+            success: true,
+            data: post
         });
 
     } catch (err) {

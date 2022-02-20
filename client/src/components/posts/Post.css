@@ -47,7 +47,7 @@
 
 }
 
-button {
+.button-orange {
     cursor: pointer;
     width: 100%;
     border: none;
@@ -57,4 +57,16 @@ button {
     padding: 10px;
     font-size: 15px;
     border-radius: 3px;
-  }
+}
+
+.button-white {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #FFF;
+    color: #ffb414;
+    margin: 0 5px 5px;
+    padding: 10px;
+    font-size: 15px;
+    border:1px solid #ffb414;
+}

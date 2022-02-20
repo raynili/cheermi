@@ -3,7 +3,7 @@ import Share from "./components/share/Share";
 import Feed from './components/feed/Feed';
 import RightSidebar from './components/sidebar/RightSidebar';
 //import './custom.scss';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 
 import { GlobalProvider } from './context/GlobalState';
 
@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <div className="App-header">
           <div className="title">cheermi</div>
-          <Button className="log-in-button">Log In</Button>{' '}
+          <button className="log-in-button">Log In</button>{' '}
         </div>
         <div className="homeContainer">
           <Share />
