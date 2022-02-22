@@ -74,7 +74,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function likePost(id, user, prayers, liked_by) {
         try {
-            const res = await axios.patch(`/api/v1/posts/${id}`, { prayers: prayers + 1, liked_by: liked_by.push(user) });
+            await axios.patch(`/api/v1/posts/${id}`, { prayers: prayers + 1, liked_by: liked_by.push(user) });
             
             dispatch({
                 type: 'LIKE_POST',
