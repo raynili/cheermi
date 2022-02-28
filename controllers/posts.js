@@ -1,5 +1,6 @@
 // Bring in Post Model to access posts
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 // @desc      Get all transactions
 // @route     GET /api/v1/transactions
@@ -24,12 +25,20 @@ exports.getPosts = async (req, res, next) => {
 
 // @desc      Add post
 // @route     POST /api/v1/posts
-// @access    Public
+// @access    Private
 exports.addPost = async (req, res, next) => {
     try {
-        const { user, post_time, text, prayers, liked_by } = req.body;
+        const { _, post_time, text, prayers, liked_by } = req.body;
 
-        const post = await Post.create({user, post_time, text, prayers, liked_by});
+        console.log(req.user.toString());
+
+        const post = await Post.create({
+            user: req.user.id,
+            name: req.user.name,
+            post_time,
+            text, 
+            prayers, 
+            liked_by});
 
         return res.status(201).json({
             success: true,
@@ -56,7 +65,7 @@ exports.addPost = async (req, res, next) => {
 
 // @desc      Delete post
 // @route     DELETE /api/v1/posts/:id
-// @access    Public
+// @access    Private
 exports.deletePost = async (req, res, next) => {
     try {
         const post = await Post.findById(req.params.id);
@@ -68,12 +77,26 @@ exports.deletePost = async (req, res, next) => {
             });
         }
 
-        await post.remove(); // some methods are called on the resource in the db
+        const user = await User.findById(req.user.id);
 
-        return res.status(200).json({
-            success: true,
-            data: {}
-        });
+        // Check for user
+        if (!user) {
+            res.status(401)
+            throw new Error('User not found');
+        }
+
+        // Check logged in user matches post user
+        if (post.user.toString() === user.id) {      
+            await post.remove(); // some methods are called on the resource in the db
+
+            return res.status(200).json({
+                success: true,
+                data: {}
+            });
+        } else {
+            res.status(401)
+            throw new Error('User not authorized');
+        }
 
     } catch (err) {
         if (err.name === 'ValidationError') {

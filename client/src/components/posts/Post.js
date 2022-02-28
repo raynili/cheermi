@@ -10,8 +10,8 @@ export default function Post({ post }) {
         <div className="post">
             <div className="poster-info">
                 <img className="poster-pic" src={pfp} alt="pfp"/>
-                <p className = "poster-name-time"> { post.user } </p>
-                <p className = "poster-name-time"> { post.post_time } </p>
+                <p className = "poster-name-time"> { post.name } </p>
+                <p className = "poster-name-time"> { post.post_time.split('T')[0] } </p>
             </div>
             <div className="post-content">
                 { post.text }

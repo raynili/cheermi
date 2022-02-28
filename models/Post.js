@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema({
         required: true,
         ref: 'User' // add reference - which model does the object pertain to?
     },
+    name: String,
     post_time: { type: Date, default: Date },
     text: String,
     prayers: Number,

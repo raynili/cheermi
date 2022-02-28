@@ -5,14 +5,16 @@ const router = express.Router();
 
 const { getPosts, addPost, deletePost, likePost } = require('../controllers/posts');
 
+const { protect } = require('../middleware/authMiddleware');
+
 router
     .route('/')
     .get(getPosts)
-    .post(addPost);
+    .post(protect, addPost);
 
 router 
     .route('/:id')
-    .delete(deletePost)
+    .delete(protect, deletePost)
     .patch(likePost);
 
 module.exports = router;
