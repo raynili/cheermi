@@ -1,0 +1,45 @@
+.App-header {
+    text-align: center;
+
+    background-color: #ffb414;
+    min-height: 8vh;
+  
+    border-width: 0 0 1px 0;
+    border-style: none none solid none;
+    border-color: gray;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: calc(10px + 2vmin);
+    position: relative;
+    color: white;
+}
+  
+.login-button {
+    position: absolute;
+    top: 6px;
+    right: 20px;
+    width: 80px;
+    height: 35px;
+    background-color: white;
+    color: #ffb414;
+    border-color: white;
+    border-radius: 0px;
+}
+
+.register-button {
+    position: absolute;
+    top: 6px;
+    right: 105px;
+    width: 80px;
+    height: 35px;
+    background-color: white;
+    color: #ffb414;
+    border-color: white;
+    border-radius: 0px;
+}
