@@ -2,7 +2,8 @@
     text-align: center;
 
     background-color: #ffb414;
-    min-height: 8vh;
+    min-height: 47px;
+    /* min-height: 8vh; */
   
     border-width: 0 0 1px 0;
     border-style: none none solid none;
@@ -15,7 +16,8 @@
 }
 
 .title {
-    font-size: calc(10px + 2vmin);
+    font-size: 25px;
+    /* font-size: calc(10px + 2vmin); */
     position: relative;
     color: white;
 }
