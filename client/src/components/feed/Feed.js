@@ -10,7 +10,7 @@ export default function Feed() {
     useEffect(() => {
         getPosts(); // if want to call html request in component, use useEffect
         // loads all posts once Feed component is created
-    }, []); 
+    }, []);
 
     console.log(posts);
 

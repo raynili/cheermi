@@ -17,7 +17,15 @@ export default function Post({ post }) {
                 { post.text }
             </div>
             <div className="buttons">
-                <button className={`${ post.liked_by.includes(post.user) ? "button-white" : "button-orange"}`} onClick={() => likePost(post._id, post.user, post.prayers, post.liked_by)}>Manifest x { post.prayers }</button>
+                <button className={`${ post.liked_by.includes(post.name) ? "button-white" : "button-orange"}`} 
+                    onClick={() => likePost(
+                            post._id, 
+                            post.name, 
+                            post.prayers, 
+                            post.liked_by
+                        )}>
+                            Manifest x { post.prayers }
+                </button>
                 <button className="button-orange" onClick={() => deletePost(post._id)}>Achieved</button>
             </div>
 

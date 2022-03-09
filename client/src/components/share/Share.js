@@ -2,9 +2,12 @@ import "./Share.css";
 import pfp from '../posts/pfp.png';
 import { useState, useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
+import { useSelector } from 'react-redux';
 
 export default function Share() {
-    const user = 'Rayni Li';
+    const { user } = useSelector((state) => state.auth);
+    const username = user.name;
+
     const [ text, setText ] = useState('');
 
     const { addPost } = useContext(GlobalContext);
@@ -29,7 +32,7 @@ export default function Share() {
             <div className="poster-info">
                 <img className="poster-pic" src={pfp} alt="pfp"/>
                 <p className = "poster-name">
-                    { user }
+                    { username }
                 </p>
             </div>
 

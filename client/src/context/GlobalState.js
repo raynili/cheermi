@@ -19,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
     // Actions
     async function getPosts() {
         try {
-            const res = await axios.get('/api/v1/posts');
+            const res = await axios.get('api/v1/posts');
 
             dispatch({
                 type: 'GET_POSTS',
@@ -35,7 +35,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function deletePost(id) {
         try {
-            await axios.delete(`/api/v1/posts/${id}`);
+            await axios.delete(`api/v1/posts/${id}`);
  
             dispatch({
                 type: 'DELETE_POST',
@@ -74,7 +74,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function likePost(id, user, prayers, liked_by) {
         try {
-            await axios.patch(`/api/v1/posts/${id}`, { prayers: prayers + 1, liked_by: liked_by.push(user) });
+            await axios.patch(`api/v1/posts/${id}`, { prayers: prayers + 1, liked_by: liked_by.push(user) });
             
             dispatch({
                 type: 'LIKE_POST',

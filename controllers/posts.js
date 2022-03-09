@@ -2,8 +2,8 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
 
-// @desc      Get all transactions
-// @route     GET /api/v1/transactions
+// @desc      Get all posts
+// @route     GET /api/v1/posts
 // @access    Public
 exports.getPosts = async (req, res, next) => {
     try {
@@ -25,16 +25,14 @@ exports.getPosts = async (req, res, next) => {
 
 // @desc      Add post
 // @route     POST /api/v1/posts
-// @access    Private
+// @access    Public
 exports.addPost = async (req, res, next) => {
     try {
-        const { _, post_time, text, prayers, liked_by } = req.body;
-
-        console.log(req.user.toString());
+        const { user, post_time, text, prayers, liked_by } = req.body;
 
         const post = await Post.create({
-            user: req.user.id,
-            name: req.user.name,
+            user: user,
+            name: user.name,
             post_time,
             text, 
             prayers, 
@@ -120,9 +118,9 @@ exports.deletePost = async (req, res, next) => {
 // @access    Public
 exports.likePost = async (req, res, next) => {
     try {
-        const { user } = req.body;
+        const { name } = await Post.findById(req.params.id);
 
-        const post = await Post.findOneAndUpdate({_id: req.params.id}, {$inc: {'prayers': 1}, $addToSet: {liked_by: user}});
+        const post = await Post.findOneAndUpdate({_id: req.params.id}, {$inc: {'prayers': 1}, $addToSet: {liked_by: name}});
  
         if (!post) {
             return res.status(400).json({
