@@ -5,7 +5,7 @@ import { GlobalContext } from "../../context/GlobalState";
 import { useSelector } from 'react-redux';
 
 export default function Share() {
-    const { user } = useSelector((state) => state.auth);
+    var { user } = useSelector((state) => state.auth) || ""; // when user is not logged in to be able to render <Share /> comp
     const username = user.name;
 
     const [ text, setText ] = useState('');
@@ -25,6 +25,8 @@ export default function Share() {
         }
 
         addPost(newPost);
+
+        setText('');
     }
 
     return (
@@ -39,8 +41,8 @@ export default function Share() {
             <div className='share-holder'>
             <form onSubmit={onSubmit}>
                 <label>
-                <textarea rows="5" cols="46" value={text} onChange={e => setText(e.target.value)} />
-                {/* value={'What dream will become a reality today?'} */}
+                <textarea rows="5" cols="46" value={text} placeholder={'What dream will become a reality today?'}
+                    onChange={e => setText(e.target.value)} />
                 </label>
                 <input type="submit" value="Submit" />
             </form>

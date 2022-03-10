@@ -65,6 +65,7 @@ exports.addPost = async (req, res, next) => {
 // @route     DELETE /api/v1/posts/:id
 // @access    Private
 exports.deletePost = async (req, res, next) => {
+
     try {
         const post = await Post.findById(req.params.id);
 
@@ -74,27 +75,13 @@ exports.deletePost = async (req, res, next) => {
                 error: 'Post not found'
             });
         }
+  
+        await post.remove(); // some methods are called on the resource in the db
 
-        const user = await User.findById(req.user.id);
-
-        // Check for user
-        if (!user) {
-            res.status(401)
-            throw new Error('User not found');
-        }
-
-        // Check logged in user matches post user
-        if (post.user.toString() === user.id) {      
-            await post.remove(); // some methods are called on the resource in the db
-
-            return res.status(200).json({
-                success: true,
-                data: {}
-            });
-        } else {
-            res.status(401)
-            throw new Error('User not authorized');
-        }
+        return res.status(200).json({
+            success: true,
+            data: {}
+        });
 
     } catch (err) {
         if (err.name === 'ValidationError') {

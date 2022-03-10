@@ -14,7 +14,7 @@ router
 
 router 
     .route('/:id')
-    .delete(protect, deletePost)
+    .delete(deletePost)
     .patch(likePost);
 
 module.exports = router;

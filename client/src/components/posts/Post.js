@@ -2,9 +2,21 @@ import './Post.css';
 import pfp from './pfp.png';
 import { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
+import { useSelector } from 'react-redux';
 
 export default function Post({ post }) {
     const { deletePost, likePost } = useContext(GlobalContext);
+    const { user } = useSelector((state) => state.auth);
+
+    const deleteButton = (name) => {
+        if (user.name === name) {
+            return (
+                <button className="button-orange" onClick={() => deletePost(post._id)}>Achieved</button>
+            )
+        } else {
+            return null;
+        }
+    }
 
     return (
         <div className="post">
@@ -26,7 +38,7 @@ export default function Post({ post }) {
                         )}>
                             Manifest x { post.prayers }
                 </button>
-                <button className="button-orange" onClick={() => deletePost(post._id)}>Achieved</button>
+                {deleteButton(post.name)}
             </div>
 
         </div>
