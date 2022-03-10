@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
@@ -22,11 +23,17 @@ app.use('/api/v1/posts', postRoutes); // mount the router
 // make request to /api/v1/posts will route to router.get inside posts
 app.use('/api/v1/users', userRoutes);
 
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, './client/build')));
+
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './', 'client', 'build', 'index.html')));
+} else {
+    app.get('/', (req, res) => res.send('Please set env to production'));
+}
+
 // overwrite default Express error handler
 app.use(errorHandler);
-
-//create simple route
-app.get('/', (req, res) => res.send('Hello'));
 
 const PORT = process.env.PORT || 5000;
 

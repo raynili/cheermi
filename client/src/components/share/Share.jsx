@@ -16,7 +16,7 @@ export default function Share() {
         e.preventDefault();
 
         const newPost = {
-            id: Math.floor(Math.random() * 100000000), // later change to uuid
+            id: Math.floor(Math.random() * 100000000), // or uuid
             user,
             post_time: new Date().toLocaleDateString(),
             text,
