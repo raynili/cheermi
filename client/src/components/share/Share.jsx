@@ -5,8 +5,8 @@ import { GlobalContext } from "../../context/GlobalState";
 import { useSelector } from 'react-redux';
 
 export default function Share() {
-    var { user } = useSelector((state) => state.auth) || ""; // when user is not logged in to be able to render <Share /> comp
-    const username = user.name;
+    var { user } = useSelector((state) => state.auth); // when user is not logged in to be able to render <Share /> comp
+    const username = user? user.name : "";
 
     const [ text, setText ] = useState('');
 
